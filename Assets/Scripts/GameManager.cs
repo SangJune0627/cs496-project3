@@ -16,39 +16,30 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     private static GameManager instance;
-
-    public Text scoreText;
     public Transform[] spawnPositions;
     public GameObject playerPrefab;
-    // public GameObject ballPrefab;
-
-    // private int[] playerScores;
-
     private void Start()
     {
-        // playerScores = new[] {0, 0};
-        // SpawnPlayer();
+        SpawnPlayer();
 
-        if (PhotonNetwork.IsMasterClient) SpawnBall();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            // SpawnBall();
+        }
     }
 
-    // private void SpawnPlayer()
-    // {
-    //     var localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
-    //     var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
-
-    //     PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
-    // }
-
-    private void SpawnBall()
+    private void SpawnPlayer()
     {
-        PhotonNetwork.Instantiate(ballPrefab.name, Vector2.zero, Quaternion.identity).GetComponent<Ball>();
+        var localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
+        Debug.Log(spawnPosition);
+        PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
     }
 
-    // public override void OnLeftRoom()
-    // {
-    //     SceneManager.LoadScene("Lobby");
-    // }
+    public override void OnLeftRoom()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
 
     // public void AddScore(int playerNumber, int score)
     // {
