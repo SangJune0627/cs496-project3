@@ -16,6 +16,8 @@ public class PlayerControl : MonoBehaviour
     public int bubble_count;
     public int bubble_strength;
 
+    public GameObject Dying;
+
     Animator animator;
     public GameObject bubblePrefab;
     Vector2 lookdirection = new Vector2(0,-1);
@@ -107,5 +109,11 @@ public class PlayerControl : MonoBehaviour
                 bubble_count -= 1;
             }
         }
+    }
+
+    public void Die(){
+        Vector2 position = transform.position;
+        position.y = position.y + 0.5f;
+        GameObject dying = Instantiate(Dying, position, Quaternion.identity);
     }
 }
