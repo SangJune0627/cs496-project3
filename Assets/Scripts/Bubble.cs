@@ -73,7 +73,13 @@ public class Bubble : MonoBehaviour
                     Destroy(other.gameObject);
                     break;
                 }
+                else if(other.GetComponent<Wall>() != null){
+                    break;
+                }
                 else{
+                    if(other.GetComponent<PlayerControl>() != null){
+                        other.GetComponent<PlayerControl>().Die();
+                    }
                     Destroy(other.gameObject);
                     if(i < strength - 1){
                         GameObject right_ex = Instantiate(Right_Ex, center, Quaternion.identity);
@@ -106,7 +112,13 @@ public class Bubble : MonoBehaviour
                     Destroy(other.gameObject);
                     break;
                 }
+                else if(other.GetComponent<Wall>() != null){
+                    break;
+                }
                 else{
+                    if(other.GetComponent<PlayerControl>() != null){
+                        other.GetComponent<PlayerControl>().Die();
+                    }
                     Destroy(other.gameObject);
                     if(i < strength - 1){
                         GameObject left_ex = Instantiate(Left_Ex, center, Quaternion.identity);
@@ -138,7 +150,13 @@ public class Bubble : MonoBehaviour
                     Destroy(other.gameObject);
                     break;
                 }
+                else if(other.GetComponent<Wall>() != null){
+                    break;
+                }
                 else{
+                    if(other.GetComponent<PlayerControl>() != null){
+                        other.GetComponent<PlayerControl>().Die();
+                    }
                     Destroy(other.gameObject);
                     if(i < strength - 1){
                         GameObject up_ex = Instantiate(Up_Ex, center, Quaternion.identity);
@@ -170,7 +188,13 @@ public class Bubble : MonoBehaviour
                     Destroy(other.gameObject);
                     break;
                 }
+                else if(other.GetComponent<Wall>() != null){
+                    break;
+                }
                 else{
+                    if(other.GetComponent<PlayerControl>() != null){
+                        other.GetComponent<PlayerControl>().Die();
+                    }
                     Destroy(other.gameObject);
                     if(i < strength - 1){
                         GameObject down_ex = Instantiate(Down_Ex, center, Quaternion.identity);
