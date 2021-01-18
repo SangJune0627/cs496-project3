@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "730175930767",
+    "project_id": "crazyarcade-by-madcamp",
+    "storage_bucket": "crazyarcade-by-madcamp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730175930767:android:14f942d95c5db491b94bfa",
+        "android_client_info": {
+          "package_name": "com.madcamp.ca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "730175930767-vjbcbk53u96l88grs5q1aj5btcesiepc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.madcamp.ca",
+            "certificate_hash": "676077c6ca6a09852e50694cc8753056960081c5"
+          }
+        },
+        {
+          "client_id": "730175930767-kpnke2olrugc4pc8hq6lv446hrbr61a5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBArh7cW2Wwbdy9NyA6XGvYCWRXdWRNVMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "730175930767-kpnke2olrugc4pc8hq6lv446hrbr61a5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
