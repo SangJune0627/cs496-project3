@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class AnimationDestroy : MonoBehaviour
+public class AnimationDestroy : MonoBehaviourPun
 {
     Animator animator;
     float exitTime = 0.9f;
@@ -15,9 +16,9 @@ public class AnimationDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(animator.GetCurrentAnimatorStateInfo(0).normalizedTime > exitTime)
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > exitTime)
         {
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }

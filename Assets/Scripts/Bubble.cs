@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Bubble : MonoBehaviour
+public class Bubble : MonoBehaviourPun
 {
     float Bubbletimer = 3.0f;
     Collider2D collider2D;
@@ -34,15 +34,14 @@ public class Bubble : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Bubbletimer -= Time.deltaTime;
-        if (Bubbletimer < 1)
+        if (Bubbletimer > 0)
         {
-            // animator.SetTrigger("Pop");
+            Bubbletimer -= Time.deltaTime;
         }
         if (Bubbletimer < 0)
         {
             Pop();
-            Destroy(gameObject);
+            Bubbletimer = 0;
         }
     }
 
@@ -63,10 +62,11 @@ public class Bubble : MonoBehaviour
 
     void Pop()
     {
+        // Debug.Log(owner);
         owner.bubble_count += 1;
         Vector2 center_position = transform.position;
-        Destroy(gameObject);
-        GameObject center_obj = Instantiate(Center, center_position, Quaternion.identity);
+        PhotonNetwork.Destroy(gameObject);
+        GameObject center_obj = PhotonNetwork.Instantiate("Center", center_position, Quaternion.identity);
         for (int i = 0; i < strength; i++)
         {
             Vector2 center = transform.position;
@@ -77,11 +77,12 @@ public class Bubble : MonoBehaviour
                 if (other.GetComponent<Bubble>() != null)
                 {
                     other.GetComponent<Bubble>().Pop();
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
+
                 }
                 else if (other.GetComponent<Block>() != null)
                 {
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
                     break;
                 }
                 else if (other.GetComponent<Wall>() != null)
@@ -94,14 +95,14 @@ public class Bubble : MonoBehaviour
                     {
                         other.GetComponent<PlayerControl>().Die();
                     }
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
                     if (i < strength - 1)
                     {
-                        GameObject right_ex = Instantiate(Right_Ex, center, Quaternion.identity);
+                        GameObject right_ex = PhotonNetwork.Instantiate("Right_Ex", center, Quaternion.identity);
                     }
                     else
                     {
-                        GameObject right = Instantiate(Right, center, Quaternion.identity);
+                        GameObject right = PhotonNetwork.Instantiate("Right", center, Quaternion.identity);
                     }
                 }
             }
@@ -109,11 +110,11 @@ public class Bubble : MonoBehaviour
             {
                 if (i < strength - 1)
                 {
-                    GameObject right_ex = Instantiate(Right_Ex, center, Quaternion.identity);
+                    GameObject right_ex = PhotonNetwork.Instantiate("Right_Ex", center, Quaternion.identity);
                 }
                 else
                 {
-                    GameObject right = Instantiate(Right, center, Quaternion.identity);
+                    GameObject right = PhotonNetwork.Instantiate("Right", center, Quaternion.identity);
                 }
             }
 
@@ -128,11 +129,11 @@ public class Bubble : MonoBehaviour
                 if (other.GetComponent<Bubble>() != null)
                 {
                     other.GetComponent<Bubble>().Pop();
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
                 }
                 else if (other.GetComponent<Block>() != null)
                 {
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
                     break;
                 }
                 else if (other.GetComponent<Wall>() != null)
@@ -145,14 +146,14 @@ public class Bubble : MonoBehaviour
                     {
                         other.GetComponent<PlayerControl>().Die();
                     }
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
                     if (i < strength - 1)
                     {
-                        GameObject left_ex = Instantiate(Left_Ex, center, Quaternion.identity);
+                        GameObject left_ex = PhotonNetwork.Instantiate("Left_Ex", center, Quaternion.identity);
                     }
                     else
                     {
-                        GameObject left = Instantiate(Left, center, Quaternion.identity);
+                        GameObject left = PhotonNetwork.Instantiate("Left", center, Quaternion.identity);
                     }
                 }
             }
@@ -160,11 +161,11 @@ public class Bubble : MonoBehaviour
             {
                 if (i < strength - 1)
                 {
-                    GameObject left_ex = Instantiate(Left_Ex, center, Quaternion.identity);
+                    GameObject left_ex = PhotonNetwork.Instantiate("Left_Ex", center, Quaternion.identity);
                 }
                 else
                 {
-                    GameObject left = Instantiate(Left, center, Quaternion.identity);
+                    GameObject left = PhotonNetwork.Instantiate("Left", center, Quaternion.identity);
                 }
             }
         }
@@ -178,11 +179,11 @@ public class Bubble : MonoBehaviour
                 if (other.GetComponent<Bubble>() != null)
                 {
                     other.GetComponent<Bubble>().Pop();
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
                 }
                 else if (other.GetComponent<Block>() != null)
                 {
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
                     break;
                 }
                 else if (other.GetComponent<Wall>() != null)
@@ -195,14 +196,14 @@ public class Bubble : MonoBehaviour
                     {
                         other.GetComponent<PlayerControl>().Die();
                     }
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
                     if (i < strength - 1)
                     {
-                        GameObject up_ex = Instantiate(Up_Ex, center, Quaternion.identity);
+                        GameObject up_ex = PhotonNetwork.Instantiate("Up_Ex", center, Quaternion.identity);
                     }
                     else
                     {
-                        GameObject up = Instantiate(Up, center, Quaternion.identity);
+                        GameObject up = PhotonNetwork.Instantiate("Up", center, Quaternion.identity);
                     }
                 }
             }
@@ -210,11 +211,11 @@ public class Bubble : MonoBehaviour
             {
                 if (i < strength - 1)
                 {
-                    GameObject up_ex = Instantiate(Up_Ex, center, Quaternion.identity);
+                    GameObject up_ex = PhotonNetwork.Instantiate("Up_Ex", center, Quaternion.identity);
                 }
                 else
                 {
-                    GameObject up = Instantiate(Up, center, Quaternion.identity);
+                    GameObject up = PhotonNetwork.Instantiate("Up", center, Quaternion.identity);
                 }
             }
         }
@@ -228,11 +229,11 @@ public class Bubble : MonoBehaviour
                 if (other.GetComponent<Bubble>() != null)
                 {
                     other.GetComponent<Bubble>().Pop();
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
                 }
                 else if (other.GetComponent<Block>() != null)
                 {
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
                     break;
                 }
                 else if (other.GetComponent<Wall>() != null)
@@ -245,14 +246,14 @@ public class Bubble : MonoBehaviour
                     {
                         other.GetComponent<PlayerControl>().Die();
                     }
-                    Destroy(other.gameObject);
+                    PhotonNetwork.Destroy(other.gameObject);
                     if (i < strength - 1)
                     {
-                        GameObject down_ex = Instantiate(Down_Ex, center, Quaternion.identity);
+                        GameObject down_ex = PhotonNetwork.Instantiate("Down_Ex", center, Quaternion.identity);
                     }
                     else
                     {
-                        GameObject down = Instantiate(Down, center, Quaternion.identity);
+                        GameObject down = PhotonNetwork.Instantiate("Down", center, Quaternion.identity);
                     }
                 }
             }
@@ -260,11 +261,11 @@ public class Bubble : MonoBehaviour
             {
                 if (i < strength - 1)
                 {
-                    GameObject down_ex = Instantiate(Down_Ex, center, Quaternion.identity);
+                    GameObject down_ex = PhotonNetwork.Instantiate("Down_Ex", center, Quaternion.identity);
                 }
                 else
                 {
-                    GameObject down = Instantiate(Down, center, Quaternion.identity);
+                    GameObject down = PhotonNetwork.Instantiate("Down", center, Quaternion.identity);
                 }
             }
         }

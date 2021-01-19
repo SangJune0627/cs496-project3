@@ -109,8 +109,10 @@ public class PlayerControl : MonoBehaviourPun
             // Debug.Log(Physics2D.OverlapBox(temp, new Vector2(1,1), 0));
             if (Physics2D.OverlapBoxAll(temp, new Vector2(0.5f, 0.5f), 0).Length == 1)
             {
-                GameObject bubbleobject = Instantiate(bubblePrefab, temp, Quaternion.identity);
+                GameObject bubbleobject = PhotonNetwork.Instantiate("bubble", temp, Quaternion.identity);
                 Bubble bubble = bubbleobject.GetComponent<Bubble>();
+                // Debug.Log("owener:" + this);
+                Debug.Log(this);
                 bubble.GetOwner(this);
                 bubble_count -= 1;
             }

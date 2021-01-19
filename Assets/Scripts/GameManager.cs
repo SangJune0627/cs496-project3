@@ -40,18 +40,4 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         SceneManager.LoadScene("Lobby");
     }
-
-    // public void AddScore(int playerNumber, int score)
-    // {
-    //     // playerScores[playerNumber - 1] += score;
-
-    //     photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
-    // }
-
-
-    // [PunRPC]
-    // private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
-    // {
-    //     scoreText.text = $"{player1ScoreText} : {player2ScoreText}";
-    // }
 }
