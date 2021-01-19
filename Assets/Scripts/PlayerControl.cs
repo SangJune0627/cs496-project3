@@ -29,19 +29,19 @@ public class PlayerControl : MonoBehaviourPun
         bubble_count = 1;
         bubble_strength = 1;
         var spriteRenderer = GetComponent<SpriteRenderer>();
-        // if (!photonView.IsMine)
-        // {
-        //     spriteRenderer.color = Color.blue;
-        // }
+        if (!photonView.IsMine)
+        {
+            spriteRenderer.color = Color.blue;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (!photonView.IsMine)
-        // {
-        //     return;
-        // }
+        if (!photonView.IsMine)
+        {
+            return;
+        }
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         isMovingHorizontal = Mathf.Abs(horizontal) > 0.5f;
