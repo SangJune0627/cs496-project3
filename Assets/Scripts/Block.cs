@@ -23,9 +23,12 @@ public class Block : MonoBehaviour
         int index = Random.Range(0, items.Length + 3);
         Vector2 position = transform.position;
         position.y = position.y + 0.5f;
+
         if (index < items.Length)
         {
-            PhotonNetwork.Instantiate(items[index], position, Quaternion.identity);
+            if (PhotonNetwork.IsMasterClient)
+                PhotonNetwork.Instantiate(items[index], position, Quaternion.identity);
         }
+        //djfhakdshfkahsdfs
     }
 }
